@@ -18,9 +18,9 @@ spec:
     spec:
       containers:
       - name: webserver-app-devopsgol
-        image: "adinugroho251/my-node-app:1.3"
+        image: "adinugroho251/webserver-devopsgol6969:1.0"
         ports:
-          - containerPort: 3000
+          - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
