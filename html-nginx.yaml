@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: webserver-app-devopsgol
-        image: "adinugroho251/webserver-devopsgol6969:1.1"
+        image: "adinugroho251/webserver-devopsgol6969:1.2"
         ports:
           - containerPort: 80
 ---
