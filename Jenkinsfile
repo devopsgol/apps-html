@@ -16,7 +16,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker_cred', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
                     sh 'sudo docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD'
-                    sh 'sudo docker tag webserver-devopsgol-betahjomblo:1.0 adinugroho251webserver-devopsgol-betahjomblo:1.0'
+                    sh 'sudo docker tag webserver-devopsgol-betahjomblo:1.0 adinugroho251/webserver-devopsgol-betahjomblo:1.0'
                     sh 'sudo docker push adinugroho251/webserver-devopsgol-betahjomblo:1.0'
                     sh 'sudo docker logout'
                 }
