@@ -25,7 +25,7 @@ pipeline {
 
       stage('Docker RUN') {
           steps {
-      	     sh 'sudo docker run -d -p 80 --name webserver-degol6969  adinugroho251/webserver-devopsgol-betahjomblo:1.0'
+      	     sh 'sudo docker run -d -p 80 --name webserver-betahjombloterus  adinugroho251/webserver-devopsgol-betahjomblo:1.0'
       }
     }
  }
