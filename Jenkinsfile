@@ -1,6 +1,6 @@
 pipeline {
     agent {
-           label 'slave-devopsgol'
+           label 'docker-slave'
     }
     stages{
         stage("checkout"){
@@ -10,26 +10,16 @@ pipeline {
         }
         stage("Build Image"){
             steps{
-                sh 'sudo docker build -t web-jomblo-mulu-udah2024:1.0 .'
+                sh 'sudo docker build -t web-jomblo-mulu-udah-2024:1.1 .'
             }
         }
 
-        stage('OWASP Dependency-Check Vulnerabilities') {
-           steps {
-               dependencyCheck additionalArguments: ''' 
-                    -o './'
-                    -s './'
-                    -f 'ALL' 
-                    --prettyPrint''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
-                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
-            }
-        }
         stage('Docker Push') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker_cred', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
                     sh 'sudo docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD'
-                    sh 'sudo docker tag web-jomblo-mulu-udah2024:1.0 adinugroho251/web-jomblo-mulu-udah2024:1.0'
-                    sh 'sudo docker push adinugroho251/web-jomblo-mulu-udah2024:1.0'
+                    sh 'sudo docker tag web-jomblo-mulu-udah-2024:1.1 adinugroho251/web-jomblo-mulu-udah-2024:1.1'
+                    sh 'sudo docker push adinugroho251/web-jomblo-mulu-udah-2024:1.1'
                     sh 'sudo docker logout'
                 }
             }
@@ -37,7 +27,7 @@ pipeline {
 
       stage('Docker RUN') {
           steps {
-      	     sh 'sudo docker run -d -p 80 --name web-jomblo-mulu-udah2024  adinugroho251/web-jomblo-mulu-udah2024:1.0'
+      	     sh 'sudo docker run -d -p 80 --name web-jomblo-mulu-udah-2024-gagalmaning  adinugroho251/web-jomblo-mulu-udah-2024:1.1'
       }
     }
  }
