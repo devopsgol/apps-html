@@ -1,12 +1,11 @@
 pipeline {
-    agent { dockerfile true 
+    agent any
     stages{
         stage("checkout"){
             steps{
                 checkout scm
             }
         }
-    }
         stage("Build Image"){
             steps{
                 sh 'sudo docker build -t web-jomblo-mulu-udah2024:1.0 .'
@@ -14,8 +13,8 @@ pipeline {
         }
 
         stage('OWASP Dependency-Check Vulnerabilities') {
-            steps {
-                dependencyCheck additionalArguments: ''' 
+           steps {
+               dependencyCheck additionalArguments: ''' 
                     -o './'
                     -s './'
                     -f 'ALL' 
