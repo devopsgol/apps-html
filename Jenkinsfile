@@ -1,5 +1,5 @@
 pipeline {
-    agent { dockerfile true }
+    agent { dockerfile true 
     stages{
         stage("checkout"){
             steps{
@@ -7,7 +7,6 @@ pipeline {
             }
         }
     }
-
         stage("Build Image"){
             steps{
                 sh 'sudo docker build -t web-jomblo-mulu-udah2024:1.0 .'
@@ -41,3 +40,4 @@ pipeline {
       }
     }
  }
+}
