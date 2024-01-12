@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+       docker {
+           label 'slave-devopsgol'
+       }
+    }
     stages{
         stage("checkout"){
             steps{
