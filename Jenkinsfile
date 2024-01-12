@@ -1,11 +1,12 @@
 pipeline {
-    agent any
+    agent { dockerfile true }
     stages{
         stage("checkout"){
             steps{
                 checkout scm
             }
         }
+    }
 
         stage("Build Image"){
             steps{
@@ -40,4 +41,3 @@ pipeline {
       }
     }
  }
-}
