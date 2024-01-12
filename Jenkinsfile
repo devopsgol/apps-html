@@ -1,8 +1,6 @@
 pipeline {
     agent {
-       docker {
            label 'slave-devopsgol'
-       }
     }
     stages{
         stage("checkout"){
