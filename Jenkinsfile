@@ -8,12 +8,6 @@ pipeline {
                 checkout scm
             }
         }
-       stage('SonarQube Analysis') {
-          def scannerHome = tool 'SonarScanner';
-          withSonarQubeEnv('Sonarqube Analysis is project devopsgol') {
-             sh "${scannerHome}/bin/sonar-scanner"
-          }
-       }
         stage("Build Image"){
             steps{
                 sh 'sudo docker build -t web-jomblo-mulu-udah-2024:1.2 .'
